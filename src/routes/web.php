@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InputController;
+use App\Http\Controllers\ConfirmController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,3 +16,4 @@ use App\Http\Controllers\InputController;
 */
 
 Route::get('/', [InputController::class, 'index']);
+Route::get('/confirm', [ConfirmController::class, 'index']);

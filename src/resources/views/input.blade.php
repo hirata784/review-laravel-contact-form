@@ -7,7 +7,7 @@
 @section('content')
 <div class="input">
     <h2 class="title">Contact</h2>
-    <form action="">
+    <form action="/confirm">
         <div class="group">
             <p class="group-item">お名前<span>※</span></p>
             <div class="group-control">
@@ -71,7 +71,7 @@
                 <textarea class="txt-area" name="" id="" placeholder="お問い合わせ内容をご記載ください"></textarea>
             </div>
         </div>
-        <button class="btn">確認画面</button>
+        <button type="submit" class="btn">確認画面</button>
     </form>
 </div>
 @endsection
