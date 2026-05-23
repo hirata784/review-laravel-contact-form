@@ -1,0 +1,61 @@
+.confirm {
+    width: 60%;
+    margin: 0 auto;
+    font-family: "Inika", serif;
+    color: #8b7969;
+}
+
+.title {
+    margin: 30px auto;
+    text-align: center;
+    font-size: 35px;
+    font-weight: normal;
+}
+
+table,
+th,
+td {
+    border: 1px solid #e0dfde;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 20px;
+    padding: 20px 20px 20px 40px;
+    font-weight: normal;
+}
+
+table {
+    width: 100%;
+}
+
+th {
+    width: 30%;
+    background-color: #baa899;
+    color: #ffffff;
+}
+
+td {
+    width: 70%;
+}
+
+.group-btn {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin: 30px 0;
+}
+
+.btn {
+    background-color: #82756a;
+    color: #ffffff;
+    padding: 8px;
+    width: 10%;
+    border: none;
+    font-size: 20px;
+}
+
+.correction {
+    color: #8b7969;
+    font-size: 20px;
+    margin-left: 30px;
+}
