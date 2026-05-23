@@ -7,7 +7,7 @@
 @section('content')
 <div class="confirm">
     <h2 class="title">Confirm</h2>
-    <form action="">
+    <form action="/thanks">
         <table>
             <tr>
                 <th>お名前</th>
