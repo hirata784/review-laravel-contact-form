@@ -7,7 +7,8 @@
 @section('content')
 <div class="confirm">
     <h2 class="title">Confirm</h2>
-    <form action="/thanks">
+    <form action="/thanks" method="post">
+        @csrf
         <table>
             <tr>
                 <th>お名前</th>
@@ -42,6 +43,9 @@
                 <td>{{$lists['detail']}}</td>
             </tr>
         </table>
+        @foreach($lists as $key => $value)
+        <input type="hidden" name="lists[{{$key}}]" value="{{$value}}">
+        @endforeach
         <div class="group-btn">
             <button type="submit" class="btn">送信</button>
             <a class="correction" href="">修正</a>

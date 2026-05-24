@@ -10,11 +10,10 @@ class ConfirmController extends Controller
     public function index(Request $request)
     {
         // 入力値を取得
-        $lists = $request->only(['gender', 'email', 'address', 'building', 'detail']);
+        $lists = $request->only(['first_name', 'last_name', 'gender', 'email', 'address', 'building', 'detail']);
 
         // 名前を結合する
-        $names = $request->only((['first_name', 'last_name']));
-        $name = $names['first_name'] . ' ' . $names['last_name'];
+        $name = $lists['first_name'] . ' ' . $lists['last_name'];
         // 名前を追加
         $lists['name'] = $name;
 
