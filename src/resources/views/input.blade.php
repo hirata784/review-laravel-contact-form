@@ -57,11 +57,9 @@
             <div class="group-control">
                 <select class="sel" name="" id="">
                     <option value="">選択してください</option>
-                    <option value="">商品のお届けについて</option>
-                    <option value="">商品の交換について</option>
-                    <option value="">商品トラブル</option>
-                    <option value="">ショップへのお問い合わせ</option>
-                    <option value="">その他</option>
+                    @foreach($lists as $list)
+                    <option value="">{{$list}}</option>
+                    @endforeach
                 </select>
             </div>
         </div>
