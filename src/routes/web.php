@@ -18,5 +18,5 @@ use App\Http\Controllers\ThanksController;
 */
 
 Route::get('/', [InputController::class, 'index']);
-Route::get('/confirm', [ConfirmController::class, 'index']);
+Route::post('/confirm', [ConfirmController::class, 'index']);
 Route::get('/thanks', [ThanksController::class, 'index']);

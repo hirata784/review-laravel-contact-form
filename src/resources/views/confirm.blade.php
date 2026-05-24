@@ -11,35 +11,35 @@
         <table>
             <tr>
                 <th>お名前</th>
-                <td>テスト太郎</td>
+                <td>{{$lists['name']}}</td>
             </tr>
             <tr>
                 <th>性別</th>
-                <td>テスト性別</td>
+                <td>{{$lists['gender']}}</td>
             </tr>
             <tr>
                 <th>メールアドレス</th>
-                <td>test@exmaple.com</td>
+                <td>{{$lists['email']}}</td>
             </tr>
             <tr>
                 <th>電話番号</th>
-                <td>1112223333</td>
+                <td>{{$lists['tel']}}</td>
             </tr>
             <tr>
                 <th>住所</th>
-                <td>テスト県</td>
+                <td>{{$lists['address']}}</td>
             </tr>
             <tr>
                 <th>建物名</th>
-                <td>テストアパート</td>
+                <td>{{$lists['building']}}</td>
             </tr>
             <tr>
                 <th>お問い合わせの種類</th>
-                <td>テスト種類</td>
+                <td>{{$lists['category']}}</td>
             </tr>
             <tr>
                 <th>お問い合わせ内容</th>
-                <td>テスト内容</td>
+                <td>{{$lists['detail']}}</td>
             </tr>
         </table>
         <div class="group-btn">
