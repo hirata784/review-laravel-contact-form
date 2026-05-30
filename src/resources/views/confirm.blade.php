@@ -48,7 +48,7 @@
         @endforeach
         <div class="group-btn">
             <button type="submit" class="btn">送信</button>
-            <a class="correction" href="">修正</a>
+            <a class="correction" href="#" onclick="history.back()">修正</a>
         </div>
     </form>
 </div>
