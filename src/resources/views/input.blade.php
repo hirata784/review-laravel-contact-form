@@ -16,6 +16,12 @@
                 <input type="text" class="pair-txt" name="last_name" placeholder="例：太郎">
             </div>
         </div>
+        @error('first_name')
+        <div class="error">{{$errors->first('first_name')}}</div>
+        @enderror
+        @error('last_name')
+        <div class="error">{{$errors->first('last_name')}}</div>
+        @enderror
         <div class="group">
             <p class="group-item">性別<span>※</span></p>
             <div class="group-radio">
@@ -27,12 +33,18 @@
                 <label class="lbl" for="other">その他</label>
             </div>
         </div>
+        @error('gender')
+        <div class="error">{{$errors->first('gender')}}</div>
+        @enderror
         <div class="group">
             <p class="group-item">メールアドレス<span>※</span></p>
             <div class="group-control">
                 <input type="text" class="txt" name="email" placeholder="例：test@example.com">
             </div>
         </div>
+        @error('email')
+        <div class="error">{{$errors->first('email')}}</div>
+        @enderror
         <div class="group">
             <p class="group-item">電話番号<span>※</span></p>
             <div class="group-control">
@@ -41,12 +53,23 @@
                 <input type="text" class="trio-txt" name="tel3" placeholder="5678">
             </div>
         </div>
+        <!-- tel1から順番に確認する。エラー表示した時点で、他の電話番号はエラーチェックしない -->
+        @if($errors->has('tel1'))
+        <div class="error">{{$errors->first('tel1')}}</div>
+        @elseif($errors->has('tel2'))
+        <div class="error">{{$errors->first('tel2')}}</div>
+        @elseif($errors->has('tel3'))
+        <div class="error">{{$errors->first('tel3')}}</div>
+        @endif
         <div class="group">
             <p class="group-item">住所<span>※</span></p>
             <div class="group-control">
                 <input type="text" class="txt" name="address" placeholder="例：東京都渋谷区千駄ヶ谷1-2-3">
             </div>
         </div>
+        @error('address')
+        <div class="error">{{$errors->first('address')}}</div>
+        @enderror
         <div class="group">
             <p class="group-item">建物名</p>
             <div class="group-control">
@@ -64,12 +87,18 @@
                 </select>
             </div>
         </div>
+        @error('category_id')
+        <div class="error">{{$errors->first('category_id')}}</div>
+        @enderror
         <div class=" group">
             <p class="group-item">お問い合わせ内容<span>※</span></p>
             <div class="group-control">
                 <textarea class="txt-area" name="detail" id="" placeholder="お問い合わせ内容をご記載ください"></textarea>
             </div>
         </div>
+        @error('detail')
+        <div class="error">{{$errors->first('detail')}}</div>
+        @enderror
         <button type="submit" class="btn">確認画面</button>
     </form>
 </div>

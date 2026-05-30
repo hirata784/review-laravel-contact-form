@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Requests\ConfirmRequest;
 
 class ConfirmController extends Controller
 {
-    public function index(Request $request)
+    public function index(ConfirmRequest $request)
     {
         // 入力値を取得
         $lists = $request->only(['first_name', 'last_name', 'gender', 'email', 'address', 'building', 'detail']);
