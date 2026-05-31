@@ -5,8 +5,13 @@
     color: #8b7969;
 }
 
+h2 {
+    margin: 0;
+}
+
 .title {
-    margin: 30px auto;
+    margin: 0 auto;
+    padding: 35px 0;
     text-align: center;
     font-size: 35px;
     font-weight: normal;
@@ -25,6 +30,7 @@ td {
 
 table {
     width: 100%;
+    margin: 30px 0;
 }
 
 th {
@@ -42,7 +48,7 @@ td {
     justify-content: center;
     text-align: center;
     align-items: center;
-    margin: 30px 0;
+    margin-top: 80px;
 }
 
 .btn {

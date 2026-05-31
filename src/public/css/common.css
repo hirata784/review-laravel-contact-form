@@ -2,10 +2,17 @@ p {
     margin: 0;
 }
 
+body{
+    height: 100vh;
+}
+
+main{
+    height: 90vh;
+}
 .header {
-    border: 1px, solid, #e0dfde;
+    border-bottom: 1px solid #e0dfde;
     width: 100%;
-    height: 100px;
+    height: 10vh;
     display: flex;
     align-items: center;
     background-color: #ffffff;
