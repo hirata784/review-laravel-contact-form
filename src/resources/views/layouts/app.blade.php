@@ -24,6 +24,12 @@
         <form class="header-form" action="/register">
             <button class="form-btn">register</button>
         </form>
+        <!-- 認証中 -->
+        @elseif(Auth::check())
+        <form class="header-form" action="/logout" method="post">
+            @csrf
+            <button class="form-btn">logout</button>
+        </form>
         <!-- その他 -->
         @else
         <div class="header-blank"></div>

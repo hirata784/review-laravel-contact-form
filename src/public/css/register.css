@@ -36,7 +36,7 @@ h2 {
 }
 
 .group {
-    margin-top: 70px;
+    margin-top: 60px;
 }
 
 .group-item {
@@ -53,11 +53,16 @@ h2 {
     font-size: 14px;
 }
 
+.error {
+    color: #d7003a;
+    margin-top: 10px;
+}
+
 .btn {
     display: block;
     background-color: #82756a;
     color: #ffffff;
-    margin: 80px auto 0;
+    margin: 70px auto 0;
     padding: 8px;
     width: 20%;
     border: none;
