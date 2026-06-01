@@ -12,9 +12,23 @@
 
 <body>
     <header class="header">
+        <div class="header-blank"></div>
         <div class="header-inner">FashionablyLate</div>
+        <!-- register -->
+        @if(request()->routeIs('register'))
+        <form class="header-form" action="/login">
+            <button class="form-btn">login</button>
+        </form>
+        <!-- login -->
+        @elseif(request()->routeIs('login'))
+        <form class="header-form" action="/register">
+            <button class="form-btn">register</button>
+        </form>
+        <!-- その他 -->
+        @else
+        <div class="header-blank"></div>
+        @endif
     </header>
-
     <main>
         @yield('content')
     </main>
