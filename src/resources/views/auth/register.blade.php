@@ -8,19 +8,20 @@
 <div class="register">
     <div class="register-content">
         <h2 class="title">Register</h2>
-        <form class="register-form" action="">
+        <form class="register-form" action="/register" method="post">
+            @csrf
             <div class="register-txt-group">
                 <div class="group">
                     <p class="group-item">お名前</p>
-                    <input type="text" class="txt" placeholder="例: 山田 太郎">
+                    <input type="text" class="txt" name="name" placeholder="例: 山田 太郎">
                 </div>
                 <div class="group">
                     <p class="group-item">メールアドレス</p>
-                    <input type="text" class="txt" placeholder="例:test@example.com">
+                    <input type="text" class="txt" name="email" placeholder="例:test@example.com">
                 </div>
                 <div class="group">
                     <p class="group-item">パスワード</p>
-                    <input type="text" class="txt" placeholder="例:coachtech1106">
+                    <input type="text" class="txt" name="password" placeholder="例:coachtech1106">
                 </div>
             </div>
             <button class="btn">登録</button>
