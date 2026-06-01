@@ -13,14 +13,14 @@
             <div class="register-txt-group">
                 <div class="group">
                     <p class="group-item">お名前</p>
-                    <input type="text" class="txt" name="name" placeholder="例: 山田 太郎">
+                    <input type="text" class="txt" name="name" placeholder="例: 山田 太郎" value="{{old('name')}}">
                 </div>
                 @error('name')
                 <div class="error">{{$errors->first('name')}}</div>
                 @enderror
                 <div class="group">
                     <p class="group-item">メールアドレス</p>
-                    <input type="text" class="txt" name="email" placeholder="例:test@example.com">
+                    <input type="text" class="txt" name="email" placeholder="例:test@example.com" value="{{old('email')}}">
                 </div>
                 @error('email')
                 <div class="error">{{$errors->first('email')}}</div>
