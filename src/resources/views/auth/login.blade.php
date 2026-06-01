@@ -1,5 +1,26 @@
 @extends('layouts.app')
 
+@section('css')
+<link rel="stylesheet" href="{{asset('css/login.css')}}">
+@endsection
+
 @section('content')
-<div>ログイン画面</div>
+<div class="login">
+    <div class="login-content">
+        <h2 class="title">Login</h2>
+        <form class="login-form" action="">
+            <div class="login-txt-group">
+                <div class="group">
+                    <p class="group-item">メールアドレス</p>
+                    <input type="text" class="txt" placeholder="例:test@example.com">
+                </div>
+                <div class="group">
+                    <p class="group-item">パスワード</p>
+                    <input type="text" class="txt" placeholder="例:coachtech1106">
+                </div>
+            </div>
+            <button class="btn">ログイン</button>
+        </form>
+    </div>
+</div>
 @endsection
