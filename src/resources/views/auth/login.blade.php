@@ -13,7 +13,7 @@
             <div class="login-txt-group">
                 <div class="group">
                     <p class="group-item">メールアドレス</p>
-                    <input type="text" class="txt" name="email" placeholder="例:test@example.com">
+                    <input type="text" class="txt" name="email" placeholder="例:test@example.com" value="{{old('email')}}">
                 </div>
                 @error('email')
                 <div class="error">{{$errors->first('email')}}</div>
