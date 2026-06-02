@@ -53,6 +53,11 @@ h2 {
     font-size: 14px;
 }
 
+.error {
+    color: #d7003a;
+    margin-top: 10px;
+}
+
 .btn {
     display: block;
     background-color: #82756a;

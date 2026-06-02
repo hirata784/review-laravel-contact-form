@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
+use App\Http\Requests\LoginRequest;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -20,7 +21,8 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        // デフォルトのログインリクエストを、自作のFormRequestで上書き
+        $this->app->bind('Laravel\Fortify\Http\Requests\LoginRequest', LoginRequest::class);
     }
 
     /**
