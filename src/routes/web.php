@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InputController;
 use App\Http\Controllers\ConfirmController;
 use App\Http\Controllers\ThanksController;
-
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +20,6 @@ use App\Http\Controllers\ThanksController;
 Route::get('/', [InputController::class, 'index']);
 Route::post('/confirm', [ConfirmController::class, 'index']);
 Route::post('/thanks', [ThanksController::class, 'index']);
+Route::middleware('auth')->group(function () {
+    Route::get('/admin', [AdminController::class, 'index']);
+});
