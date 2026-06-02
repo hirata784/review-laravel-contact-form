@@ -33,7 +33,7 @@
                 <div class="error">{{$errors->first('password')}}</div>
                 @enderror
             </div>
-            <button class="btn">登録</button>
+            <button class="btn" type="submit">登録</button>
         </form>
     </div>
 </div>
