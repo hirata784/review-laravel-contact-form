@@ -133,6 +133,13 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'email' => [
+            'required' => 'メールアドレスを入力してください',
+            'email' => 'メールアドレスはメール形式で入力してください',
+        ],
+        'password' => [
+            'required' => 'パスワードを入力してください',
+        ]
     ],
 
     /*
