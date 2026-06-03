@@ -42,6 +42,11 @@ class AdminController extends Controller
             $lists[$key]['category'] = $category;
         }
 
-        return view('admin', compact('lists'));
+        // お問い合わせの種類セレクトボックス値作成
+        foreach ($categories as $key => $category) {
+            $select_category[$key] = $category['content'];
+        }
+
+        return view('admin', compact('lists', 'select_category'));
     }
 }

@@ -18,11 +18,9 @@
             </select>
             <select class="category" name="" id="">
                 <option value="">お問い合わせの種類</option>
-                <option value="">商品のお届けについて</option>
-                <option value="">商品の交換について</option>
-                <option value="">商品トラブル</option>
-                <option value="">ショップへのお問い合わせ</option>
-                <option value="">その他</option>
+                @foreach($select_category as $select)
+                <option value="{{$loop->index+1}}">{{$select}}</option>
+                @endforeach
             </select>
             <input class="date" type="date">
             <button class="btn search" type="submit">検索</button>
