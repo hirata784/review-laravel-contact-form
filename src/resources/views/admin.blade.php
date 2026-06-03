@@ -39,55 +39,15 @@
                 <th>お問い合わせの種類</th>
                 <th></th>
             </tr>
+            @foreach($lists as $list)
             <tr>
-                <td>テスト 太郎</td>
-                <td>男性</td>
-                <td>test@example.com</td>
-                <td>商品のお届けについて</td>
+                <td>{{$list['last_name']}} {{$list['first_name']}}</td>
+                <td>{{$list['gender']}}</td>
+                <td>{{$list['email']}}</td>
+                <td>{{$list['category']}}</td>
                 <td><button class="detail-btn">詳細</button></td>
             </tr>
-            <tr>
-                <td>テスト 太郎</td>
-                <td>男性</td>
-                <td>test@example.com</td>
-                <td>商品のお届けについて</td>
-                <td><button class="detail-btn">詳細</button></td>
-            </tr>
-            <tr>
-                <td>テスト 太郎</td>
-                <td>男性</td>
-                <td>test@example.com</td>
-                <td>商品のお届けについて</td>
-                <td><button class="detail-btn">詳細</button></td>
-            </tr>
-            <tr>
-                <td>テスト 太郎</td>
-                <td>男性</td>
-                <td>test@example.com</td>
-                <td>商品のお届けについて</td>
-                <td><button class="detail-btn">詳細</button></td>
-            </tr>
-            <tr>
-                <td>テスト 太郎</td>
-                <td>男性</td>
-                <td>test@example.com</td>
-                <td>商品のお届けについて</td>
-                <td><button class="detail-btn">詳細</button></td>
-            </tr>
-            <tr>
-                <td>テスト 太郎</td>
-                <td>男性</td>
-                <td>test@example.com</td>
-                <td>商品のお届けについて</td>
-                <td><button class="detail-btn">詳細</button></td>
-            </tr>
-            <tr>
-                <td>テスト 太郎</td>
-                <td>男性</td>
-                <td>test@example.com</td>
-                <td>商品のお届けについて</td>
-                <td><button class="detail-btn">詳細</button></td>
-            </tr>
+            @endforeach
         </table>
     </form>
 </div>
