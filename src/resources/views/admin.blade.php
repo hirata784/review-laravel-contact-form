@@ -49,9 +49,10 @@
             @endforeach
         </table>
     </form>
+    <!-- モーダル -->
     <div class="modal" id="modal">
         <div class="modal-content">
-            <button class="modal-cancel-btn">×</button>
+            <button class="modal-cancel-btn" id="modal-cancel-btn">×</button>
             <table class="modal-table">
                 <tr>
                     <th class="modal-th">お名前</th>
