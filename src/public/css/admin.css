@@ -122,3 +122,24 @@ th {
     font-size: 18px;
     color: #d9c6b5;
 }
+
+/* モーダル */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    width: 500px;
+    margin: 20% auto 0 auto;
+    padding: 50px;
+    text-align: center;
+    border: 1px solid black;
+}

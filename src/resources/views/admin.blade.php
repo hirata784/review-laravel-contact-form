@@ -44,10 +44,16 @@
                 <td>{{$list['gender']}}</td>
                 <td>{{$list['email']}}</td>
                 <td>{{$list['category']}}</td>
-                <td><button class="detail-btn">詳細</button></td>
+                <td><button type="button" class="detail-btn">詳細</button></td>
             </tr>
             @endforeach
         </table>
     </form>
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            モーダル
+        </div>
+    </div>
+<script src="{{asset('js/main.js')}}"></script>
 </div>
 @endsection
