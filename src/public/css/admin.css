@@ -92,9 +92,9 @@ h2 {
     border: none;
 }
 
-table,
-th,
-td {
+.list-table,
+.list-th,
+.list-td {
     border-bottom: 1px solid #e0dfde;
     border-collapse: collapse;
     text-align: left;
@@ -102,14 +102,14 @@ td {
     padding: 20px 20px 20px 40px;
 }
 
-table {
+.list-table {
     width: 100%;
     margin: 30px 0;
     border-right: 1px solid #e0dfde;
     border-left: 1px solid #e0dfde;
 }
 
-th {
+.list-th {
     background-color: #8b7969;
     color: #ffffff;
 }
@@ -137,9 +137,46 @@ th {
 
 .modal-content {
     background-color: #ffffff;
-    width: 500px;
-    margin: 20% auto 0 auto;
-    padding: 50px;
+    width: 53%;
+    height: 858px;
+    margin: 5% auto;
+    padding: 100px 50px 50px;
     text-align: center;
-    border: 1px solid black;
+    border: 1px solid #8b7969;
+    box-shadow: 4px 4px 4px #8b796940;
+    position: relative;
+}
+
+.modal-cancel-btn {
+    background-color: #ffffff;
+    border: 1px solid #8b7969;
+    border-radius: 20px;
+    color: #8b7969;
+    font-size: 30px;
+    font-weight: normal;
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    right: 35px;
+    top: 35px;
+}
+
+.modal-table,
+.modal-th,
+.modal-td {
+    text-align: left;
+    font-size: 20px;
+    padding: 20px 20px 20px 40px;
+}
+
+.modal-table {
+    margin-bottom: 70px;
+}
+
+.modal-th {
+    color: #8b7969;
+}
+
+.modal-delete-btn {
+    background-color: #ba370d;
 }

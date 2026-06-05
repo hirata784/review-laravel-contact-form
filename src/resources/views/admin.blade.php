@@ -30,30 +30,65 @@
         <div class="export">
             <button class="export-btn" type="submit">エクスポート</button>
         </div>
-        <table>
+        <table class="list-table">
             <tr>
-                <th>お名前</th>
-                <th>性別</th>
-                <th>メールアドレス</th>
-                <th>お問い合わせの種類</th>
-                <th></th>
+                <th class="list-th">お名前</th>
+                <th class="list-th">性別</th>
+                <th class="list-th">メールアドレス</th>
+                <th class="list-th">お問い合わせの種類</th>
+                <th class="list-th"></th>
             </tr>
             @foreach($lists as $list)
             <tr>
-                <td>{{$list['last_name']}} {{$list['first_name']}}</td>
-                <td>{{$list['gender']}}</td>
-                <td>{{$list['email']}}</td>
-                <td>{{$list['category']}}</td>
-                <td><button type="button" class="detail-btn">詳細</button></td>
+                <td class="list-td">{{$list['last_name']}} {{$list['first_name']}}</td>
+                <td class="list-td">{{$list['gender']}}</td>
+                <td class="list-td">{{$list['email']}}</td>
+                <td class="list-td">{{$list['category']}}</td>
+                <td class="list-td"><button type="button" class="detail-btn">詳細</button></td>
             </tr>
             @endforeach
         </table>
     </form>
     <div class="modal" id="modal">
         <div class="modal-content">
-            モーダル
+            <button class="modal-cancel-btn">×</button>
+            <table class="modal-table">
+                <tr>
+                    <th class="modal-th">お名前</th>
+                    <td class="modal-td">テスト 太郎</td>
+                </tr>
+                <tr>
+                    <th class="modal-th">性別</th>
+                    <td class="modal-td">男性</td>
+                </tr>
+                <tr>
+                    <th class="modal-th">メールアドレス</th>
+                    <td class="modal-td">taro@example.com</td>
+                </tr>
+                <tr>
+                    <th class="modal-th">電話番号</th>
+                    <td class="modal-td">0001112222</td>
+                </tr>
+                <tr>
+                    <th class="modal-th">住所</th>
+                    <td class="modal-td">テスト県テスト市テスト区1-2-3</td>
+                </tr>
+                <tr>
+                    <th class="modal-th">建物名</th>
+                    <td class="modal-td">テストアパート</td>
+                </tr>
+                <tr>
+                    <th class="modal-th">お問い合わせの種類</th>
+                    <td class="modal-td">商品のお届けについて</td>
+                </tr>
+                <tr>
+                    <th class="modal-th">お問い合わせ内容</th>
+                    <td class="modal-td">テストメッセージテストメッセージ</td>
+                </tr>
+            </table>
+            <button class="btn modal-delete-btn">削除</button>
         </div>
     </div>
-<script src="{{asset('js/main.js')}}"></script>
+    <script src="{{asset('js/main.js')}}"></script>
 </div>
 @endsection
