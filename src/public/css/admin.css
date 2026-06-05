@@ -73,6 +73,10 @@ h2 {
 
 .reset {
     background-color: #d9c6b5;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .export {

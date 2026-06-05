@@ -12,6 +12,7 @@
             <input class="txt" type="text" name="text" placeholder="名前やメールアドレスを入力してください">
             <select class="gender" name="gender">
                 <option value="">性別</option>
+                <option value="">全て</option>
                 <option value="1">男性</option>
                 <option value="2">女性</option>
                 <option value="3">その他</option>
@@ -24,7 +25,7 @@
             </select>
             <input class="date" type="date" name="created_at">
             <button class="btn search" type="submit">検索</button>
-            <button class="btn reset" type="submit">リセット</button>
+            <a href="/admin" class="btn reset">リセット</a>
         </div>
         <div class="export">
             <button class="export-btn" type="submit">エクスポート</button>
