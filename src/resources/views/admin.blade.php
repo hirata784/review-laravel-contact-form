@@ -44,7 +44,8 @@
                 <td class="list-td">{{$list['gender']}}</td>
                 <td class="list-td">{{$list['email']}}</td>
                 <td class="list-td">{{$list['category']}}</td>
-                <td class="list-td"><button type="button" class="detail-btn">詳細</button></td>
+                <!-- data-targetでボタンを押下したデータを取得する -->
+                <td class="list-td"><button type="button" class="detail-btn" data-target="{{$loop->index}}">詳細</button></td>
             </tr>
             @endforeach
         </table>
@@ -56,40 +57,46 @@
             <table class="modal-table">
                 <tr>
                     <th class="modal-th">お名前</th>
-                    <td class="modal-td">テスト 太郎</td>
+                    <td class="modal-td" id="td-name"></td>
                 </tr>
                 <tr>
                     <th class="modal-th">性別</th>
-                    <td class="modal-td">男性</td>
+                    <td class="modal-td" id="td-gender"></td>
                 </tr>
                 <tr>
                     <th class="modal-th">メールアドレス</th>
-                    <td class="modal-td">taro@example.com</td>
+                    <td class="modal-td" id="td-email"></td>
                 </tr>
                 <tr>
                     <th class="modal-th">電話番号</th>
-                    <td class="modal-td">0001112222</td>
+                    <td class="modal-td" id="td-tel"></td>
                 </tr>
                 <tr>
                     <th class="modal-th">住所</th>
-                    <td class="modal-td">テスト県テスト市テスト区1-2-3</td>
+                    <td class="modal-td" id="td-address"></td>
                 </tr>
                 <tr>
                     <th class="modal-th">建物名</th>
-                    <td class="modal-td">テストアパート</td>
+                    <td class="modal-td" id="td-building"></td>
                 </tr>
                 <tr>
                     <th class="modal-th">お問い合わせの種類</th>
-                    <td class="modal-td">商品のお届けについて</td>
+                    <td class="modal-td" id="td-category"></td>
                 </tr>
                 <tr>
                     <th class="modal-th">お問い合わせ内容</th>
-                    <td class="modal-td">テストメッセージテストメッセージ</td>
+                    <td class="modal-td" id="td-detail"></td>
                 </tr>
             </table>
             <button class="btn modal-delete-btn">削除</button>
         </div>
     </div>
+
+    <script>
+        // PHPの配列をJavaScriptで操作できる配列へ変換
+        const tableData = JSON.parse('@json($lists)');
+    </script>
+
     <script src="{{asset('js/main.js')}}"></script>
 </div>
 @endsection

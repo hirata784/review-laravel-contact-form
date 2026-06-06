@@ -20,6 +20,10 @@ class AdminController extends Controller
             $lists[$key]['first_name'] = $contact['first_name'];
             $lists[$key]['last_name'] = $contact['last_name'];
             $lists[$key]['email'] = $contact['email'];
+            $lists[$key]['tel'] = $contact['tel'];
+            $lists[$key]['address'] = $contact['address'];
+            $lists[$key]['building'] = $contact['building'];
+            $lists[$key]['detail'] = $contact['detail'];
 
             // 性別を文字列へ変換
             $gender_num = $contact['gender'];
@@ -84,6 +88,10 @@ class AdminController extends Controller
             $lists[$key]['first_name'] = $contact['first_name'];
             $lists[$key]['last_name'] = $contact['last_name'];
             $lists[$key]['email'] = $contact['email'];
+            $lists[$key]['tel'] = $contact['tel'];
+            $lists[$key]['address'] = $contact['address'];
+            $lists[$key]['building'] = $contact['building'];
+            $lists[$key]['detail'] = $contact['detail'];
 
             // 性別を文字列へ変換
             $gender_num = $contact['gender'];
