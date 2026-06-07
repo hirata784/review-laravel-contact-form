@@ -17,6 +17,7 @@ class AdminController extends Controller
         $lists = [];
 
         foreach ($contacts as $key => $contact) {
+            $lists[$key]['id'] = $contact['id'];
             $lists[$key]['first_name'] = $contact['first_name'];
             $lists[$key]['last_name'] = $contact['last_name'];
             $lists[$key]['email'] = $contact['email'];
@@ -85,6 +86,7 @@ class AdminController extends Controller
         })->get();
 
         foreach ($contacts as $key => $contact) {
+            $lists[$key]['id'] = $contact['id'];
             $lists[$key]['first_name'] = $contact['first_name'];
             $lists[$key]['last_name'] = $contact['last_name'];
             $lists[$key]['email'] = $contact['email'];
@@ -119,5 +121,17 @@ class AdminController extends Controller
         }
 
         return view('admin', compact('lists', 'select_category'));
+    }
+
+    public function delete(Request $request)
+    {
+        // contactテーブルを取得
+        $contacts = Contact::all();
+        // 削除対象のidを取得
+        $delete_id = $request->only(['id']);
+        // 該当データ削除
+        $contacts->find($delete_id['id'])->delete();
+        // データ削除後はリロードする
+        return back();
     }
 }

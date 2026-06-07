@@ -1,6 +1,7 @@
 const modal = document.getElementById("modal");
 const detailBtn = document.querySelectorAll(".detail-btn");
 const cancelBtn = document.getElementById("modal-cancel-btn");
+const hidden = document.getElementById("modal-hidden");
 // 詳細データ表示
 const tdName = document.getElementById("td-name");
 const tdGender = document.getElementById("td-gender");
@@ -15,7 +16,7 @@ const tdDetail = document.getElementById("td-detail");
 detailBtn.forEach((button) => {
     button.addEventListener("click", function () {
         // 詳細データ取得
-        const targetId = this.dataset.target;
+        let targetId = this.dataset.target;
         tdName.textContent =
             tableData[targetId]["last_name"] +
             " " +
@@ -27,6 +28,8 @@ detailBtn.forEach((button) => {
         tdBuilding.textContent = tableData[targetId]["building"];
         tdCategory.textContent = tableData[targetId]["category"];
         tdDetail.textContent = tableData[targetId]["detail"];
+        // データ削除用idをhiddenで作成
+        hidden.value = tableData[targetId]["id"];
         // モーダル表示
         modal.style.display = "block";
     });

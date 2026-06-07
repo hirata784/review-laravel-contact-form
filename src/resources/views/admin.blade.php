@@ -54,41 +54,45 @@
     <div class="modal" id="modal">
         <div class="modal-content">
             <button class="modal-cancel-btn" id="modal-cancel-btn">×</button>
-            <table class="modal-table">
-                <tr>
-                    <th class="modal-th">お名前</th>
-                    <td class="modal-td" id="td-name"></td>
-                </tr>
-                <tr>
-                    <th class="modal-th">性別</th>
-                    <td class="modal-td" id="td-gender"></td>
-                </tr>
-                <tr>
-                    <th class="modal-th">メールアドレス</th>
-                    <td class="modal-td" id="td-email"></td>
-                </tr>
-                <tr>
-                    <th class="modal-th">電話番号</th>
-                    <td class="modal-td" id="td-tel"></td>
-                </tr>
-                <tr>
-                    <th class="modal-th">住所</th>
-                    <td class="modal-td" id="td-address"></td>
-                </tr>
-                <tr>
-                    <th class="modal-th">建物名</th>
-                    <td class="modal-td" id="td-building"></td>
-                </tr>
-                <tr>
-                    <th class="modal-th">お問い合わせの種類</th>
-                    <td class="modal-td" id="td-category"></td>
-                </tr>
-                <tr>
-                    <th class="modal-th">お問い合わせ内容</th>
-                    <td class="modal-td" id="td-detail"></td>
-                </tr>
-            </table>
-            <button class="btn modal-delete-btn">削除</button>
+            <form action="/admin/delete" method="post" id="modal-form">
+                @csrf
+                <table class="modal-table">
+                    <tr>
+                        <th class="modal-th">お名前</th>
+                        <td class="modal-td" id="td-name"></td>
+                    </tr>
+                    <tr>
+                        <th class="modal-th">性別</th>
+                        <td class="modal-td" id="td-gender"></td>
+                    </tr>
+                    <tr>
+                        <th class="modal-th">メールアドレス</th>
+                        <td class="modal-td" id="td-email"></td>
+                    </tr>
+                    <tr>
+                        <th class="modal-th">電話番号</th>
+                        <td class="modal-td" id="td-tel"></td>
+                    </tr>
+                    <tr>
+                        <th class="modal-th">住所</th>
+                        <td class="modal-td" id="td-address"></td>
+                    </tr>
+                    <tr>
+                        <th class="modal-th">建物名</th>
+                        <td class="modal-td" id="td-building"></td>
+                    </tr>
+                    <tr>
+                        <th class="modal-th">お問い合わせの種類</th>
+                        <td class="modal-td" id="td-category"></td>
+                    </tr>
+                    <tr>
+                        <th class="modal-th">お問い合わせ内容</th>
+                        <td class="modal-td" id="td-detail"></td>
+                    </tr>
+                </table>
+                <input type="hidden" id="modal-hidden" name="id">
+                <button class="btn modal-delete-btn">削除</button>
+            </form>
         </div>
     </div>
 
