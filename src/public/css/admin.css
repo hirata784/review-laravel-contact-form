@@ -81,6 +81,8 @@ h2 {
 
 .export {
     margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .export-btn {
@@ -179,4 +181,59 @@ h2 {
 
 .modal-delete-btn {
     background-color: #ba370d;
+}
+
+/* ページネーション */
+
+/* 非表示にするため、属性セレクターを使い、完全一致でクラスを持つ要素のみ対象とする */
+/* Showing results*/
+[class="text-sm text-gray-700 leading-5"] {
+    display: none;
+}
+
+/* << 前, 次 >> */
+[class="flex justify-between flex-1 sm:hidden"] {
+    display: none;
+}
+
+/* 全体 */
+[class="relative z-0 inline-flex shadow-sm rounded-md"] {
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+/* 選択 */
+.pagination-wrapper span span span {
+    background-color: #8b7969;
+    color: #ffffff;
+    border: 1px solid #e0dfde;
+    width: 39px;
+    height: 39px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 未選択 */
+.pagination-wrapper a {
+    background-color: #ffffff;
+    color: #8b7969;
+    border: 1px solid #e0dfde;
+    width: 39px;
+    height: 39px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*paginateメソッドの矢印*/
+svg.w-5.h-5 {
+    width: 39px;
+    height: 39px;
+    background-color: #ffffff;
+    color: #8b7969;
+    border: 1px solid #e0dfde;
 }

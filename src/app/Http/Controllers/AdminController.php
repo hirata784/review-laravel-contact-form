@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Contact;
 use App\Models\Category;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class AdminController extends Controller
 {
@@ -50,6 +52,22 @@ class AdminController extends Controller
         foreach ($categories as $key => $category) {
             $select_category[$key] = $category['content'];
         }
+
+        // ページネーション設定
+        // 配列からコレクションへ変換
+        $collection = collect($lists);
+        // 1ページごとの表示件数
+        $perPage = 7;
+        // 現在のページを取得
+        $page = Paginator::resolveCurrentPage('page');
+        // ページ番号から表示するデータを確定
+        $pageData = $collection->slice(($page - 1) * $perPage, $perPage);
+        $options = [
+            'path' => Paginator::resolveCurrentPath(),
+            'pageName' => 'page'
+        ];
+        // listsをページネーション設定したものに上書き
+        $lists = new LengthAwarePaginator($pageData, $collection->count(), $perPage, $page, $options);
 
         return view('admin', compact('lists', 'select_category'));
     }

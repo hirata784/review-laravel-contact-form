@@ -29,6 +29,9 @@
         </div>
         <div class="export">
             <button class="export-btn" type="submit">エクスポート</button>
+            <div class="pagination-wrapper">
+            {{$lists->links()}}
+            </div>
         </div>
         <table class="list-table">
             <tr>
