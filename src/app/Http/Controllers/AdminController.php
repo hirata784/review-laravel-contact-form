@@ -80,6 +80,13 @@ class AdminController extends Controller
         $categories = Category::all();
         // 入力値を取得
         $searches = $request->only(['text', 'gender', 'category_id', 'created_at']);
+
+        // 未入力の場合、空白を取得する(未定義配列キーと表示され、、ページネーションを使うことができないため)
+        $searches['text'] = isset($searches['text']) ? $searches['text'] : "";
+        $searches['gender'] = isset($searches['gender']) ? $searches['gender'] : "";
+        $searches['category_id'] = isset($searches['category_id']) ? $searches['category_id'] : "";
+        $searches['created_at'] = isset($searches['created_at']) ? $searches['created_at'] : "";
+
         // textのスペース削除
         $searches['text'] = str_replace(' ', '', $searches['text']);
         $lists = [];
@@ -137,6 +144,22 @@ class AdminController extends Controller
         foreach ($categories as $key => $category) {
             $select_category[$key] = $category['content'];
         }
+
+        // ページネーション設定
+        // 配列からコレクションへ変換
+        $collection = collect($lists);
+        // 1ページごとの表示件数
+        $perPage = 7;
+        // 現在のページを取得
+        $page = Paginator::resolveCurrentPage('page');
+        // ページ番号から表示するデータを確定
+        $pageData = $collection->slice(($page - 1) * $perPage, $perPage);
+        $options = [
+            'path' => Paginator::resolveCurrentPath(),
+            'pageName' => 'page'
+        ];
+        // listsをページネーション設定したものに上書き
+        $lists = new LengthAwarePaginator($pageData, $collection->count(), $perPage, $page, $options);
 
         return view('admin', compact('lists', 'select_category'));
     }
