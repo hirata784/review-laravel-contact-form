@@ -28,7 +28,7 @@
             <a href="/admin" class="btn reset">リセット</a>
         </div>
         <div class="export">
-            <button class="export-btn" type="submit">エクスポート</button>
+            <a href="/export" class="export-btn">エクスポート</a>
             <div class="pagination-wrapper">
                 {{$lists->appends(request()->input())->links() }}
             </div>

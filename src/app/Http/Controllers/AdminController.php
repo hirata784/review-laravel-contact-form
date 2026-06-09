@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Contact;
 use App\Models\Category;
+use Carbon\Carbon;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Pagination\LengthAwarePaginator;
 
@@ -162,6 +163,79 @@ class AdminController extends Controller
         $lists = new LengthAwarePaginator($pageData, $collection->count(), $perPage, $page, $options);
 
         return view('admin', compact('lists', 'select_category'));
+    }
+
+    public function export()
+    {
+        // contactテーブルを取得
+        $contacts = Contact::all();
+
+        // ヘッダーを作成
+        $csvHeader = [
+            'id',
+            'category_id',
+            'last_name',
+            'first_name',
+            'gender',
+            'email',
+            'tel',
+            'address',
+            'building',
+            'detail'
+        ];
+        // 出力データ保存用配列作成
+        $temps = [];
+        array_push($temps, $csvHeader);
+
+        // テーブルデータを追加
+        foreach ($contacts as $contact) {
+            $temp = [
+                $contact['id'],
+                $contact['category_id'],
+                $contact['last_name'],
+                $contact['first_name'],
+                $contact['gender'],
+                $contact['email'],
+                // 先頭の0自動削除対策
+                '="' . $contact['tel'] . '"',
+                $contact['address'],
+                $contact['building'],
+                $contact['detail'],
+            ];
+            array_push($temps, $temp);
+        }
+
+        // 書き込み用のファイルを一時的に作成し、開く
+        $stream = fopen('php://temp', 'r+b');
+
+        // 作成したファイルに出力したいデータを書き込む
+        foreach ($temps as $temp) {
+            fputcsv($stream, $temp);
+        }
+        // ファイルポインタを先頭に戻す
+        rewind($stream);
+
+        // 改行コードを置き換え・文字列に変換・エンコード
+        // fputcsvで書き込む際に、1つ書き込むたびに改行コード（PHP_EOL）が追加される。
+        // この改行コードがOS依存のため、str_replace関数を用いて「\r\n」に置き換える。
+        // stream_get_contents関数を用いて、文字列に変換する。
+        $csv = str_replace(PHP_EOL, "\r\n", stream_get_contents($stream));
+
+        // 文字列をエンコードする(文字化け防止)
+        $csv = mb_convert_encoding($csv, 'SJIS-win', 'UTF-8');
+
+        // ファイル作成日時
+        $now = new Carbon();
+        // ファイル名作成
+        $filename = "Contactsデータ一覧(" . $now->format('Y年m月d日') . ").csv";
+
+        // ファイルをCSV形式に変換する
+        $headers = array(
+            'Content-Type' => 'text/csv',
+            'Content-Disposition' => 'attachment; filename=' . $filename,
+        );
+        // CSVファイルを出力する
+        return response($csv, 200, $headers);
     }
 
     public function delete(Request $request)
