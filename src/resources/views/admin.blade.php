@@ -28,7 +28,9 @@
             <a href="/admin" class="btn reset">リセット</a>
         </div>
         <div class="export">
-            <a href="/export" class="export-btn">エクスポート</a>
+            <!-- http_build_query(...)：取得したパラメータの配列を、URLとして使用できる形式に変換 -->
+            <!-- request()->query()：現在のリクエストに含まれる全てのクエリパラメータを配列として取得 -->
+            <a href="/export?{{ http_build_query(request()->query()) }}" class="export-btn">エクスポート</a>
             <div class="pagination-wrapper">
                 {{$lists->appends(request()->input())->links() }}
             </div>
