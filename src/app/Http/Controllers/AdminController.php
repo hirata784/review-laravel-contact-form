@@ -66,37 +66,12 @@ class AdminController extends Controller
         $contacts = Contact::all();
         // categoriesテーブルを取得
         $categories = Category::all();
+        $lists = [];
         // 入力値を取得
         $searches = $request->only(['text', 'gender', 'category_id', 'created_at']);
 
-        // 未入力の場合、空白を取得する(未定義配列キーと表示され、、ページネーションを使うことができないため)
-        $searches['text'] = isset($searches['text']) ? $searches['text'] : "";
-        $searches['gender'] = isset($searches['gender']) ? $searches['gender'] : "";
-        $searches['category_id'] = isset($searches['category_id']) ? $searches['category_id'] : "";
-        $searches['created_at'] = isset($searches['created_at']) ? $searches['created_at'] : "";
-
-        // textのスペース削除
-        $searches['text'] = str_replace(' ', '', $searches['text']);
-        $lists = [];
-
-        // whenを使い、検索条件が空白のとき、whereを無視
-        $contacts = Contact::when($searches['gender'], function ($query, $gender) {
-            // 性別
-            return $query->where('gender', $gender);
-        })->when($searches['category_id'], function ($query, $category_id) {
-            // お問い合わせの種類
-            return $query->where('category_id', $category_id);
-        })->when($searches['created_at'], function ($query, $created_at) {
-            // 日付
-            return $query->WhereDate('created_at', $created_at);
-        })->when($searches['text'], function ($query, $text) {
-            // 名前やメールアドレス
-            return $query->where('email', 'like', '%' . $text . '%')
-                ->orWhere('first_name', 'like', '%' . $text . '%')
-                ->orWhere('last_name', 'like', '%' . $text . '%')
-                // 苗字と名前を結合してフルネーム検索
-                ->orWhereRaw('CONCAT(last_name,"",first_name) LIKE ?', '%' . $text . '%');
-        })->get();
+        // 検索機能
+        $contacts = $this->searchContact($searches);
 
         foreach ($contacts as $key => $contact) {
             $lists[$key]['id'] = $contact['id'];
@@ -144,33 +119,8 @@ class AdminController extends Controller
         // クエリパラメータを取得
         $searches = $request->only(['text', 'gender', 'category_id', 'created_at']);
 
-        // 未入力の場合、空白を取得する(未定義配列キーと表示され、、ページネーションを使うことができないため)
-        $searches['text'] = isset($searches['text']) ? $searches['text'] : "";
-        $searches['gender'] = isset($searches['gender']) ? $searches['gender'] : "";
-        $searches['category_id'] = isset($searches['category_id']) ? $searches['category_id'] : "";
-        $searches['created_at'] = isset($searches['created_at']) ? $searches['created_at'] : "";
-
-        // textのスペース削除
-        $searches['text'] = str_replace(' ', '', $searches['text']);
-
-        // whenを使い、検索条件が空白のとき、whereを無視
-        $contacts = Contact::when($searches['gender'], function ($query, $gender) {
-            // 性別
-            return $query->where('gender', $gender);
-        })->when($searches['category_id'], function ($query, $category_id) {
-            // お問い合わせの種類
-            return $query->where('category_id', $category_id);
-        })->when($searches['created_at'], function ($query, $created_at) {
-            // 日付
-            return $query->WhereDate('created_at', $created_at);
-        })->when($searches['text'], function ($query, $text) {
-            // 名前やメールアドレス
-            return $query->where('email', 'like', '%' . $text . '%')
-                ->orWhere('first_name', 'like', '%' . $text . '%')
-                ->orWhere('last_name', 'like', '%' . $text . '%')
-                // 苗字と名前を結合してフルネーム検索
-                ->orWhereRaw('CONCAT(last_name,"",first_name) LIKE ?', '%' . $text . '%');
-        })->get();
+        // 検索機能
+        $contacts = $this->searchContact($searches);
 
         // ヘッダーを作成
         $csvHeader = [
@@ -270,5 +220,39 @@ class AdminController extends Controller
         // listsをページネーション設定したものに上書き
         $lists = new LengthAwarePaginator($pageData, $collection->count(), $perPage, $page, $options);
         return $lists;
+    }
+
+    // 検索機能
+    public function searchContact(array $searches)
+    {
+        // 未入力の場合、空白を取得する(未定義配列キーと表示され、、ページネーションを使うことができないため)
+        $searches['text'] = isset($searches['text']) ? $searches['text'] : "";
+        $searches['gender'] = isset($searches['gender']) ? $searches['gender'] : "";
+        $searches['category_id'] = isset($searches['category_id']) ? $searches['category_id'] : "";
+        $searches['created_at'] = isset($searches['created_at']) ? $searches['created_at'] : "";
+
+        // textのスペース削除
+        $searches['text'] = str_replace(' ', '', $searches['text']);
+
+        // whenを使い、検索条件が空白のとき、whereを無視
+        $contacts = Contact::when($searches['gender'], function ($query, $gender) {
+            // 性別
+            return $query->where('gender', $gender);
+        })->when($searches['category_id'], function ($query, $category_id) {
+            // お問い合わせの種類
+            return $query->where('category_id', $category_id);
+        })->when($searches['created_at'], function ($query, $created_at) {
+            // 日付
+            return $query->WhereDate('created_at', $created_at);
+        })->when($searches['text'], function ($query, $text) {
+            // 名前やメールアドレス
+            return $query->where('email', 'like', '%' . $text . '%')
+                ->orWhere('first_name', 'like', '%' . $text . '%')
+                ->orWhere('last_name', 'like', '%' . $text . '%')
+                // 苗字と名前を結合してフルネーム検索
+                ->orWhereRaw('CONCAT(last_name,"",first_name) LIKE ?', '%' . $text . '%');
+        })->get();
+
+        return $contacts;
     }
 }
