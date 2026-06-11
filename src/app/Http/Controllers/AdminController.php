@@ -17,37 +17,9 @@ class AdminController extends Controller
         $contacts = Contact::all();
         // categoriesテーブルを取得
         $categories = Category::all();
-        $lists = [];
 
-        foreach ($contacts as $key => $contact) {
-            $lists[$key]['id'] = $contact['id'];
-            $lists[$key]['first_name'] = $contact['first_name'];
-            $lists[$key]['last_name'] = $contact['last_name'];
-            $lists[$key]['email'] = $contact['email'];
-            $lists[$key]['tel'] = $contact['tel'];
-            $lists[$key]['address'] = $contact['address'];
-            $lists[$key]['building'] = $contact['building'];
-            $lists[$key]['detail'] = $contact['detail'];
-
-            // 性別を文字列へ変換
-            $gender_num = $contact['gender'];
-            $gender = "";
-            if ($gender_num === 1) {
-                $gender = "男性";
-            } elseif ($gender_num === 2) {
-                $gender = "女性";
-            } elseif ($gender_num === 3) {
-                $gender = "その他";
-            }
-            // 性別を追加
-            $lists[$key]['gender'] = $gender;
-
-            // お問い合わせの種類を文字列に変換
-            $category_id = $contact['category_id'];
-            $category = $categories->where('id', $category_id)->pluck('content')->first();
-            // お問い合わせの種類を追加
-            $lists[$key]['category'] = $category;
-        }
+        // デフォルト画面表示
+        $lists = $this->showDefaultScreen($contacts, $categories);
 
         // お問い合わせの種類セレクトボックス値作成
         foreach ($categories as $key => $category) {
@@ -66,42 +38,14 @@ class AdminController extends Controller
         $contacts = Contact::all();
         // categoriesテーブルを取得
         $categories = Category::all();
-        $lists = [];
         // 入力値を取得
         $searches = $request->only(['text', 'gender', 'category_id', 'created_at']);
 
         // 検索機能
         $contacts = $this->searchContact($searches);
 
-        foreach ($contacts as $key => $contact) {
-            $lists[$key]['id'] = $contact['id'];
-            $lists[$key]['first_name'] = $contact['first_name'];
-            $lists[$key]['last_name'] = $contact['last_name'];
-            $lists[$key]['email'] = $contact['email'];
-            $lists[$key]['tel'] = $contact['tel'];
-            $lists[$key]['address'] = $contact['address'];
-            $lists[$key]['building'] = $contact['building'];
-            $lists[$key]['detail'] = $contact['detail'];
-
-            // 性別を文字列へ変換
-            $gender_num = $contact['gender'];
-            $gender = "";
-            if ($gender_num === 1) {
-                $gender = "男性";
-            } elseif ($gender_num === 2) {
-                $gender = "女性";
-            } elseif ($gender_num === 3) {
-                $gender = "その他";
-            }
-            // 性別を追加
-            $lists[$key]['gender'] = $gender;
-
-            // お問い合わせの種類を文字列に変換
-            $category_id = $contact['category_id'];
-            $category = $categories->where('id', $category_id)->pluck('content')->first();
-            // お問い合わせの種類を追加
-            $lists[$key]['category'] = $category;
-        }
+        // デフォルト画面表示
+        $lists = $this->showDefaultScreen($contacts, $categories);
 
         // お問い合わせの種類セレクトボックス値作成
         foreach ($categories as $key => $category) {
@@ -202,6 +146,44 @@ class AdminController extends Controller
         return back();
     }
 
+    // デフォルト画面表示
+    public function showDefaultScreen(object $contacts, object $categories)
+    {
+        $lists = [];
+
+        foreach ($contacts as $key => $contact) {
+            $lists[$key]['id'] = $contact['id'];
+            $lists[$key]['first_name'] = $contact['first_name'];
+            $lists[$key]['last_name'] = $contact['last_name'];
+            $lists[$key]['email'] = $contact['email'];
+            $lists[$key]['tel'] = $contact['tel'];
+            $lists[$key]['address'] = $contact['address'];
+            $lists[$key]['building'] = $contact['building'];
+            $lists[$key]['detail'] = $contact['detail'];
+
+            // 性別を文字列へ変換
+            $gender_num = $contact['gender'];
+            $gender = "";
+            if ($gender_num === 1) {
+                $gender = "男性";
+            } elseif ($gender_num === 2) {
+                $gender = "女性";
+            } elseif ($gender_num === 3) {
+                $gender = "その他";
+            }
+            // 性別を追加
+            $lists[$key]['gender'] = $gender;
+
+            // お問い合わせの種類を文字列に変換
+            $category_id = $contact['category_id'];
+            $category = $categories->where('id', $category_id)->pluck('content')->first();
+            // お問い合わせの種類を追加
+            $lists[$key]['category'] = $category;
+        }
+
+        return $lists;
+    }
+
     // ページネーション設定
     public function setupPagination(array $lists)
     {
@@ -219,6 +201,7 @@ class AdminController extends Controller
         ];
         // listsをページネーション設定したものに上書き
         $lists = new LengthAwarePaginator($pageData, $collection->count(), $perPage, $page, $options);
+
         return $lists;
     }
 
