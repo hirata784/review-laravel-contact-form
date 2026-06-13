@@ -45,3 +45,18 @@ p {
     transform: translate(-50%, -50%);
     z-index: 1;
 }
+
+@media screen and (max-width: 900px) {
+    .str {
+        font-size: 35px;
+    }
+
+    .btn {
+        width: 80%;
+        padding: 20px;
+    }
+
+    .back {
+        font-size: 200px;
+    }
+}
