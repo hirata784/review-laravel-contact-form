@@ -24,8 +24,10 @@
                 @endforeach
             </select>
             <input class="date" type="date" name="created_at">
-            <button class="btn search" type="submit">検索</button>
-            <a href="/admin" class="btn reset">リセット</a>
+            <div class="btn-group">
+                <button class="btn search" type="submit">検索</button>
+                <a href="/admin" class="btn reset">リセット</a>
+            </div>
         </div>
         <div class="export">
             <!-- http_build_query(...)：取得したパラメータの配列を、URLとして使用できる形式に変換 -->
