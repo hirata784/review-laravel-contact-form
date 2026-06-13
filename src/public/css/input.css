@@ -40,7 +40,6 @@ span {
 
 .group-radio {
     display: flex;
-    /* justify-content: flex-start; */
     align-items: center;
     width: 70%;
 }
@@ -120,7 +119,6 @@ span {
 
 @media screen and (max-width: 850px) {
     .group {
-        /* display: flex; */
         flex-direction: column;
         margin-top: 15px;
     }

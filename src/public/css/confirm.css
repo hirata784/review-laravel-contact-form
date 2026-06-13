@@ -65,3 +65,32 @@ td {
     font-size: 20px;
     margin-left: 30px;
 }
+
+@media screen and (max-width: 1400px) {
+    .confirm {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    th,
+    td {
+        display: block;
+        width: 100%;
+    }
+
+    .group-btn {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 20px;
+        font-size: 20px;
+    }
+
+    .correction {
+        margin: 20px 0 0 0;
+        font-size: 20px;
+    }
+}
