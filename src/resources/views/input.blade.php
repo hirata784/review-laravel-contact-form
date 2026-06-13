@@ -12,15 +12,15 @@
         <div class="group">
             <p class="group-item">お名前<span>※</span></p>
             <div class="group-control">
-                <input type="text" class="pair-txt" name="first_name" placeholder="例：山田" value="{{old('first_name')}}">
-                <input type="text" class="pair-txt" name="last_name" placeholder="例：太郎" value="{{old('last_name')}}">
+                <input type="text" class="pair-txt" name="last_name" placeholder="例：山田" value="{{old('last_name')}}">
+                <input type="text" class="pair-txt" name="first_name" placeholder="例：太郎" value="{{old('first_name')}}">
             </div>
         </div>
-        @error('first_name')
-        <div class="error">{{$errors->first('first_name')}}</div>
-        @enderror
         @error('last_name')
         <div class="error">{{$errors->first('last_name')}}</div>
+        @enderror
+        @error('first_name')
+        <div class="error">{{$errors->first('first_name')}}</div>
         @enderror
         <div class="group">
             <p class="group-item">性別<span>※</span></p>

@@ -14,7 +14,7 @@ class ConfirmController extends Controller
         $lists = $request->only(['first_name', 'last_name', 'gender', 'email', 'address', 'building', 'detail']);
 
         // 名前を結合する
-        $name = $lists['first_name'] . ' ' . $lists['last_name'];
+        $name = $lists['last_name'] . ' ' . $lists['first_name'];
         // 名前を追加
         $lists['name'] = $name;
 
