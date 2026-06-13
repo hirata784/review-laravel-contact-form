@@ -46,6 +46,7 @@ p {
     z-index: 1;
 }
 
+/* レスポンシブデザイン */
 @media screen and (max-width: 900px) {
     .str {
         font-size: 35px;

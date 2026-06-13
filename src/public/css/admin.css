@@ -261,6 +261,7 @@ svg.w-5.h-5 {
     border: 1px solid #e0dfde;
 }
 
+/* レスポンシブデザイン */
 @media screen and (max-width: 1600px) {
     .modal-content {
         width: 90%;
