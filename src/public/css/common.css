@@ -45,3 +45,30 @@ main {
     margin: 0 auto;
     width: 40%;
 }
+
+@media screen and (max-width: 1300px) {
+    .header-blank {
+        display: none;
+    }
+
+    .header-inner {
+        margin: 0;
+        padding: 0 40px;
+    }
+
+    .header-form {
+        width: 30%;
+    }
+
+    .form-btn {
+        font-size: 25px;
+        padding: 16px;
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .header-form {
+        width: 40%;
+    }
+}
