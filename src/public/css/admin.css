@@ -155,7 +155,7 @@ h2 {
 
 .modal-content {
     background-color: #ffffff;
-    width: 53%;
+    width: 65%;
     height: 858px;
     margin: 5% auto;
     padding: 100px 50px 50px;
@@ -197,6 +197,13 @@ h2 {
 
 .modal-delete-btn {
     background-color: #ba370d;
+    color: #ffffff;
+    padding: 8px;
+    margin-top: 20px;
+    width: 10%;
+    height: 50px;
+    border: none;
+    font-size: 18px;
 }
 
 /* ページネーション */
@@ -252,6 +259,20 @@ svg.w-5.h-5 {
     background-color: #ffffff;
     color: #8b7969;
     border: 1px solid #e0dfde;
+}
+
+@media screen and (max-width: 1600px) {
+    .modal-content {
+        width: 90%;
+        height: auto;
+    }
+
+    .modal-delete-btn {
+        padding: 20px;
+        width: 70%;
+        height: auto;
+        font-size: 20px;
+    }
 }
 
 @media screen and (max-width: 1400px) {
@@ -313,7 +334,7 @@ svg.w-5.h-5 {
         border-bottom: 1px solid #e0dfde;
     }
 
-    tr:last-child,
+    .list-tr:last-child,
     .list-td:last-child {
         border-bottom: 1px solid #e0dfde;
     }
@@ -363,5 +384,21 @@ svg.w-5.h-5 {
     svg.w-5.h-5 {
         width: 50px;
         height: 50px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .modal-th,
+    .modal-td {
+        display: block;
+        width: 100%;
+    }
+
+    .modal-th {
+        padding: 20px 20px 0 40px;
+    }
+
+    .modal-td {
+        padding: 0 20px 20px 40px;
     }
 }

@@ -38,7 +38,7 @@
             </div>
         </div>
         <table class="list-table">
-            <tr>
+            <tr class="list-tr">
                 <th class="list-th">お名前</th>
                 <th class="list-th">性別</th>
                 <th class="list-th">メールアドレス</th>
@@ -46,7 +46,7 @@
                 <th class="list-th"></th>
             </tr>
             @foreach($lists as $list)
-            <tr>
+            <tr class="list-tr">
                 <td class="list-td">{{$list['last_name']}} {{$list['first_name']}}</td>
                 <td class="list-td">{{$list['gender']}}</td>
                 <td class="list-td">{{$list['email']}}</td>
@@ -98,7 +98,7 @@
                     </tr>
                 </table>
                 <input type="hidden" id="modal-hidden" name="id">
-                <button class="btn modal-delete-btn">削除</button>
+                <button class="modal-delete-btn">削除</button>
             </form>
         </div>
     </div>
