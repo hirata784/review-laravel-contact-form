@@ -70,8 +70,8 @@ class AdminController extends Controller
         $csvHeader = [
             'id',
             'category_id',
-            'last_name',
             'first_name',
+            'last_name',
             'gender',
             'email',
             'tel',
@@ -88,8 +88,8 @@ class AdminController extends Controller
             $temp = [
                 $contact['id'],
                 $contact['category_id'],
-                $contact['last_name'],
                 $contact['first_name'],
+                $contact['last_name'],
                 $contact['gender'],
                 $contact['email'],
                 // 先頭の0自動削除対策
